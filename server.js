@@ -1,10 +1,15 @@
 require('dotenv').config()
 const express = require('express')
-const connectDB = require('./database/db')
+const connectDB = require('./database/db');
+const route = require('./routes/product-routes')
 
 const app = express();
 
-app.use(express.json())
+//middleware
+app.use(express.json());
+
+//routes
+app.use('/api/products', route);
 
 //Connect to DB
 connectDB()
